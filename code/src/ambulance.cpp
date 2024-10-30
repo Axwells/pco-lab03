@@ -33,9 +33,7 @@ void Ambulance::sendPatient(){
 
 void Ambulance::run() {
     interface->consoleAppendText(uniqueId, "[START] Ambulance routine");
-
-
-    while (true /*TODO*/) {
+    while (stocks.at(ItemType::PatientSick) > 0) {
     
         sendPatient();
         
