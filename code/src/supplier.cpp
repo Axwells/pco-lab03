@@ -17,21 +17,31 @@ Supplier::Supplier(int uniqueId, int fund, std::vector<ItemType> resourcesSuppli
 
 
 int Supplier::request(ItemType it, int qty) {
-    // TODO
+    if (this->stocks[it] >= qty){
+        int supplierCost = getEmployeeSalary(getEmployeeThatProduces(it));
+
+        this->stocks[it] -= qty;
+        this->money += supplierCost * qty; // Not sure if the money needs to be increased
+        this->nbSupplied += qty;
+
+        return supplierCost * qty;
+    }
     return 0;
 }
 
 void Supplier::run() {
     interface->consoleAppendText(uniqueId, "[START] Supplier routine");
-    while (true /*TODO*/) {
+
+    while (this->money >= 10){ /*Maybe not right, but it is safe*/
         ItemType resourceSupplied = getRandomItemFromStock();
         int supplierCost = getEmployeeSalary(getEmployeeThatProduces(resourceSupplied));
-        // TODO 
+        this->stocks[resourceSupplied]++;
+        this->money -= supplierCost;
 
         /* Temps aléatoire borné qui simule l'attente du travail fini*/
         interface->simulateWork();
         //TODO
-
+        //I don't know what to implement after this TODO
         nbSupplied++;
 
         interface->updateFund(uniqueId, money);
