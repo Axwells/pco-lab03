@@ -21,13 +21,19 @@ Ambulance::Ambulance(int uniqueId, int fund, std::vector<ItemType> resourcesSupp
 }
 
 void Ambulance::sendPatient(){
-    // TODO
+    Seller* hospital = Seller::chooseRandomSeller(this->hospitals);
+    int result = hospital->send(ItemType::PatientSick,1,TRANSFER_COST);
+
+    if(result != 0){
+        this->money -= TRANSFER_COST;
+        this->stocks.at(ItemType::PatientSick) -= 1;
+        this->nbTransfer++;
+    }
 }
 
 void Ambulance::run() {
     interface->consoleAppendText(uniqueId, "[START] Ambulance routine");
-
-    while (true /*TODO*/) {
+    while (stocks.at(ItemType::PatientSick) > 0) {
     
         sendPatient();
         
@@ -74,6 +80,7 @@ void Ambulance::setHospitals(std::vector<Seller*> hospitals){
 }
 
 int Ambulance::send(ItemType it, int qty, int bill) {
+
     return 0;
 }
 
