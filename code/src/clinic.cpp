@@ -26,24 +26,54 @@ bool Clinic::verifyResources() {
 }
 
 int Clinic::request(ItemType what, int qty){
-    // TODO 
-
+    if (what != ItemType::PatientHealed) return 0;
+    if (stocks[what] >= qty){
+        stocks[what] -= qty;
+        //Not sure if the price should be updated
+        int price = getCostPerUnit(ItemType::PatientHealed) * qty;
+        this->money += price;
+        return price;
+    }
     return 0;
 }
 
 void Clinic::treatPatient() {
-    // TODO 
-
+    for(ItemType item : resourcesNeeded){
+        this->stocks[item]--;
+    }
     //Temps simulant un traitement 
     interface->simulateWork();
 
-    // TODO 
-    
+    this->money -= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
+    this->nbTreated++;
     interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
 }
 
 void Clinic::orderResources() {
-    // TODO 
+    //Request a sick patient from hospital
+    int nbOfPatient;
+    Seller* hospital = Seller::chooseRandomSeller(this->hospitals); // Not sure if the static call is the right one
+    nbOfPatient = hospital->request(ItemType::PatientSick, 1); // TODO WORK with the return
+    if(nbOfPatient == 0) interface->consoleAppendText(uniqueId, "Clinic has found no sickPatient"); // TO REMOVE DEBUG MESSAGE
+    else stocks[ItemType::PatientSick]++;
+
+
+    //Something might be wrong, and a function already exists
+    std::map<ItemType, int> tempItems;
+    for (auto item : resourcesNeeded) {
+        if(item != ItemType::PatientSick){
+            tempItems[item] = 1;
+        }
+    }
+    //Request a new resource from supplier
+    ItemType item = Seller::chooseRandomItem(tempItems);
+    Seller* supplier = Seller::chooseRandomSeller(this->suppliers); // Not sure if the static call is the right one
+    int amountToPay = 0;
+    amountToPay = supplier->request(item, 1);
+    this->money -= amountToPay;
+
+    stocks[item]++;
+
 }
 
 void Clinic::run() {
@@ -53,8 +83,7 @@ void Clinic::run() {
     }
     interface->consoleAppendText(uniqueId, "[START] Factory routine");
 
-    while (true /*TODO*/) {
-        
+    while (this->nbTreated <= 900 /*Idk what to put*/) {
         if (verifyResources()) {
             treatPatient();
         } else {
