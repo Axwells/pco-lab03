@@ -2,7 +2,6 @@
 #include "costs.h"
 #include "clinic.h"
 #include <iostream>
-#include <queue>
 #include <pcosynchro/pcothread.h>
 
 IWindowInterface* Hospital::interface = nullptr;
@@ -21,26 +20,23 @@ Hospital::Hospital(int uniqueId, int fund, int maxBeds)
 }
 
 int Hospital::request(ItemType what, int qty){
-    while (true) {
-        if(what == ItemType::PatientSick && stocks[what] >= qty) {
-            int bill = getCostPerUnit(ItemType::PatientSick) * qty;
-            stocks[what] -= qty;
-            currentBeds -= qty;
-            this->money += bill;
-            return bill;
-        }
-        --qty;
+    if(what == ItemType::PatientSick && stocks[what] >= qty) {
+        int bill = getCostPerUnit(ItemType::PatientSick) * qty;
+        stocks[what] -= qty;
+        currentBeds -= qty;
+        this->money += bill;
+        return bill;
     }
+    return 0;
 }
 
 void Hospital::freeHealedPatient() {
-    static std::queue<int> recoveryQueue;
 
-    int healedCount = recoveryQueue.size();
+    int healedCount = this->recoveryQueue.size();
 
     for (int i = 0; i < healedCount; ++i) {
-        int recoveryTime = recoveryQueue.front();  // Get the remaining recovery time of the first patient
-        recoveryQueue.pop(); // Remove the patient from the queue to process them
+        int recoveryTime = this->recoveryQueue.front();  // Get the remaining recovery time of the first patient
+        this->recoveryQueue.pop(); // Remove the patient from the queue to process them
 
         if (--recoveryTime == 0) {
             // Patient is fully healed and can be freed
@@ -49,7 +45,7 @@ void Hospital::freeHealedPatient() {
             ++nbFree;
         } else {
             // Patient still needs more recovery time, add them back with updated recovery time
-            recoveryQueue.push(recoveryTime);
+            this->recoveryQueue.push(recoveryTime);
         }
     }
 }
@@ -59,9 +55,10 @@ void Hospital::transferPatientsFromClinic() {
     int qty = 1;
     int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
     if (this->money >= bill && currentBeds + qty <= maxBeds && chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, qty) != 0) {
-        ++stocks[ItemType::PatientHealed];
-        ++currentBeds;
-        ++nbHospitalised;
+        stocks[ItemType::PatientHealed] += qty;
+        currentBeds += qty;
+        nbHospitalised += qty;
+        this->recoveryQueue.push(5);
         this->money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
     }
 }

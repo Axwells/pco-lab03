@@ -18,13 +18,12 @@ Supplier::Supplier(int uniqueId, int fund, std::vector<ItemType> resourcesSuppli
 
 int Supplier::request(ItemType it, int qty) {
     if (this->stocks[it] >= qty){
-        int supplierCost = getEmployeeSalary(getEmployeeThatProduces(it));
-
+        int bill = getCostPerUnit(it) * qty;
         this->stocks[it] -= qty;
-        this->money += supplierCost * qty; // Not sure if the money needs to be increased
+        this->money += bill;
         this->nbSupplied += qty;
 
-        return supplierCost * qty;
+        return bill;
     }
     return 0;
 }

@@ -2,6 +2,7 @@
 #define HOSPITAL_H
 
 #include <vector>
+#include <queue>
 #include <pcosynchro/pcomutex.h>
 
 #include "iwindowinterface.h"
@@ -103,6 +104,8 @@ private:
     int nbHospitalised; //Nombre de transfert réussi vers l'hôpital (nombre de fois ou un(e) infirmier/infirmière est payé)
 
     int nbFree; // Nombre de personnes qui sont sorties soignées de l'hôpital.
+
+    std::queue<int> recoveryQueue;
 
     static IWindowInterface* interface;  // Pointeur statique vers l'interface utilisateur pour les logs et mises à jour visuelles
 };

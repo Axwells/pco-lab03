@@ -29,8 +29,7 @@ int Clinic::request(ItemType what, int qty){
     if (what != ItemType::PatientHealed) return 0;
     if (stocks[what] >= qty){
         stocks[what] -= qty;
-        //Not sure if the price should be updated
-        int price = getCostPerUnit(ItemType::PatientHealed) * qty;
+        int price = getCostPerUnit(what) * qty;
         this->money += price;
         return price;
     }
