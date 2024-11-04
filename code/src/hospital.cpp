@@ -1,6 +1,8 @@
 #include "hospital.h"
 #include "costs.h"
+#include "clinic.h"
 #include <iostream>
+#include <queue>
 #include <pcosynchro/pcothread.h>
 
 IWindowInterface* Hospital::interface = nullptr;
@@ -10,7 +12,7 @@ Hospital::Hospital(int uniqueId, int fund, int maxBeds)
 {
     interface->updateFund(uniqueId, fund);
     interface->consoleAppendText(uniqueId, "Hospital Created with " + QString::number(maxBeds) + " beds");
-    
+
     std::vector<ItemType> initialStocks = { ItemType::PatientHealed, ItemType::PatientSick };
 
     for(const auto& item : initialStocks) {
@@ -19,21 +21,60 @@ Hospital::Hospital(int uniqueId, int fund, int maxBeds)
 }
 
 int Hospital::request(ItemType what, int qty){
-    // TODO 
-    return 0;
+    while (true) {
+        if(what == ItemType::PatientSick && stocks[what] >= qty) {
+            stocks[what] -= qty;
+            currentBeds -= qty;
+            int bill = getEmployeeSalary(EmployeeType::Nurse) * qty;
+            this->money -= bill;
+            return bill;
+        }
+        --qty;
+    }
 }
 
 void Hospital::freeHealedPatient() {
-    // TODO 
+    static std::queue<int> recoveryQueue;
+
+    int healedCount = recoveryQueue.size();
+
+    for (int i = 0; i < healedCount; ++i) {
+        int recoveryTime = recoveryQueue.front();  // Get the remaining recovery time of the first patient
+        recoveryQueue.pop(); // Remove the patient from the queue to process them
+
+        if (--recoveryTime == 0) {
+            // Patient is fully healed and can be freed
+            --stocks[ItemType::PatientHealed];
+            --currentBeds;
+            ++nbFree;
+        } else {
+            // Patient still needs more recovery time, add them back with updated recovery time
+            recoveryQueue.push(recoveryTime);
+        }
+    }
 }
 
 void Hospital::transferPatientsFromClinic() {
-    // TODO
+    //qty is set to 1 for now
+    if (chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, 1) != 0 && currentBeds + 1 <= maxBeds) {
+        ++stocks[ItemType::PatientHealed];
+        ++currentBeds;
+        ++nbHospitalised;
+        //working because qty is set to 1 for now
+        this->money -= getEmployeeSalary(EmployeeType::Nurse);
+    }
 }
 
 int Hospital::send(ItemType it, int qty, int bill) {
-    // TODO
-    return 0;
+    if(currentBeds + qty > maxBeds || this->money < bill) {
+        return 0;
+    }
+    stocks[ItemType::PatientSick] += qty;
+    currentBeds += qty;
+    nbHospitalised += qty;
+    this->money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
+    this->money -= bill;
+    return 1;
 }
 
 void Hospital::run()

@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "PCO_LAB03",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "pco_hospital::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pco_hospital-Debug-0eb15fd4fc20ecc1cfde.json",
+					"name" : "pco_hospital",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pco_hospital_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pco_hospital_autogen-Debug-b46ac1a2f339aebb3deb.json",
+					"name" : "pco_hospital_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pco_hospital_tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pco_hospital_tests-Debug-2ae4165fcd15a44761c8.json",
+					"name" : "pco_hospital_tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pco_hospital_tests_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pco_hospital_tests_autogen-Debug-1c17c8d09cab55d8c8a2.json",
+					"name" : "pco_hospital_tests_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug",
+		"source" : "/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -1,0 +1,6 @@
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/CMakeFiles/pco_hospital.dir
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/CMakeFiles/pco_hospital_tests.dir
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/CMakeFiles/pco_hospital_autogen.dir
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/CMakeFiles/pco_hospital_tests_autogen.dir

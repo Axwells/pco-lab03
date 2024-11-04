@@ -46,6 +46,7 @@ void Clinic::treatPatient() {
 
     this->money -= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
     this->nbTreated++;
+    this->stocks[ItemType::PatientHealed]++;
     interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
 }
 
@@ -53,9 +54,9 @@ void Clinic::orderResources() {
     //Request a sick patient from hospital
     int nbOfPatient;
     Seller* hospital = Seller::chooseRandomSeller(this->hospitals); // Not sure if the static call is the right one
-    nbOfPatient = hospital->request(ItemType::PatientSick, 1); // TODO WORK with the return
+    nbOfPatient = hospital->request(ItemType::PatientSick, 2); // TODO WORK with the return
     if(nbOfPatient == 0) interface->consoleAppendText(uniqueId, "Clinic has found no sickPatient"); // TO REMOVE DEBUG MESSAGE
-    else stocks[ItemType::PatientSick]++;
+    else stocks[ItemType::PatientSick]+= nbOfPatient;
 
 
     //Something might be wrong, and a function already exists
