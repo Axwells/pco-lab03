@@ -15,7 +15,6 @@ Supplier::Supplier(int uniqueId, int fund, std::vector<ItemType> resourcesSuppli
     interface->updateFund(uniqueId, fund);
 }
 
-
 int Supplier::request(ItemType it, int qty) {
     if (this->stocks[it] >= qty){
         int bill = getCostPerUnit(it) * qty;
@@ -48,7 +47,6 @@ void Supplier::run() {
     }
     interface->consoleAppendText(uniqueId, "[STOP] Supplier routine");
 }
-
 
 std::map<ItemType, int> Supplier::getItemsForSale() {
     return stocks;

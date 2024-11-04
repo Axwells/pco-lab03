@@ -23,10 +23,10 @@ Ambulance::Ambulance(int uniqueId, int fund, std::vector<ItemType> resourcesSupp
 void Ambulance::sendPatient(){
     int qty = 1;
     Seller* hospital = Seller::chooseRandomSeller(this->hospitals);
-    int result = hospital->send(ItemType::PatientSick,qty,TRANSFER_COST);
+    int result = hospital->send(ItemType::PatientSick,qty,getCostPerUnit(ItemType::PatientSick));
 
     if(result != 0){
-        this->money += TRANSFER_COST * qty;
+        this->money += getCostPerUnit(ItemType::PatientSick) * qty;
         this->stocks.at(ItemType::PatientSick) -= qty;
         this->nbTransfer += qty;
     }

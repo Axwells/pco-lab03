@@ -29,9 +29,9 @@ int Clinic::request(ItemType what, int qty){
     if (what != ItemType::PatientHealed) return 0;
     if (stocks[what] >= qty){
         stocks[what] -= qty;
-        int price = getCostPerUnit(what) * qty;
-        this->money += price;
-        return price;
+        int bill = getCostPerUnit(what) * qty;
+        this->money += bill;
+        return bill;
     }
     return 0;
 }
