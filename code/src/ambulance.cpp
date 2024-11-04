@@ -21,13 +21,14 @@ Ambulance::Ambulance(int uniqueId, int fund, std::vector<ItemType> resourcesSupp
 }
 
 void Ambulance::sendPatient(){
+    int qty = 1;
     Seller* hospital = Seller::chooseRandomSeller(this->hospitals);
-    int result = hospital->send(ItemType::PatientSick,1,TRANSFER_COST);
+    int result = hospital->send(ItemType::PatientSick,qty,TRANSFER_COST);
 
     if(result != 0){
-        this->money -= TRANSFER_COST;
-        this->stocks.at(ItemType::PatientSick) -= 1;
-        this->nbTransfer++;
+        this->money += TRANSFER_COST * qty;
+        this->stocks.at(ItemType::PatientSick) -= qty;
+        this->nbTransfer += qty;
     }
 }
 

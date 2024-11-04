@@ -23,10 +23,10 @@ Hospital::Hospital(int uniqueId, int fund, int maxBeds)
 int Hospital::request(ItemType what, int qty){
     while (true) {
         if(what == ItemType::PatientSick && stocks[what] >= qty) {
+            int bill = getCostPerUnit(ItemType::PatientSick) * qty;
             stocks[what] -= qty;
             currentBeds -= qty;
-            int bill = getEmployeeSalary(EmployeeType::Nurse) * qty;
-            this->money -= bill;
+            this->money += bill;
             return bill;
         }
         --qty;
@@ -56,12 +56,13 @@ void Hospital::freeHealedPatient() {
 
 void Hospital::transferPatientsFromClinic() {
     //qty is set to 1 for now
-    if (chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, 1) != 0 && currentBeds + 1 <= maxBeds) {
+    int qty = 1;
+    int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
+    if (this->money >= bill && currentBeds + qty <= maxBeds && chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, qty) != 0) {
         ++stocks[ItemType::PatientHealed];
         ++currentBeds;
         ++nbHospitalised;
-        //working because qty is set to 1 for now
-        this->money -= getEmployeeSalary(EmployeeType::Nurse);
+        this->money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
     }
 }
 
@@ -72,8 +73,8 @@ int Hospital::send(ItemType it, int qty, int bill) {
     stocks[ItemType::PatientSick] += qty;
     currentBeds += qty;
     nbHospitalised += qty;
-    this->money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
     this->money -= bill;
+    this->money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
     return 1;
 }
 

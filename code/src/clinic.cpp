@@ -51,30 +51,26 @@ void Clinic::treatPatient() {
 }
 
 void Clinic::orderResources() {
-    //Request a sick patient from hospital
-    int nbOfPatient;
-    Seller* hospital = Seller::chooseRandomSeller(this->hospitals); // Not sure if the static call is the right one
-    nbOfPatient = hospital->request(ItemType::PatientSick, 2); // TODO WORK with the return
-    if(nbOfPatient == 0) interface->consoleAppendText(uniqueId, "Clinic has found no sickPatient"); // TO REMOVE DEBUG MESSAGE
-    else stocks[ItemType::PatientSick]+= nbOfPatient;
-
-
-    //Something might be wrong, and a function already exists
-    std::map<ItemType, int> tempItems;
+    /*Find missing resource*/
+    int qtyOfResource = 1;
     for (auto item : resourcesNeeded) {
-        if(item != ItemType::PatientSick){
-            tempItems[item] = 1;
+        if (stocks[item] == 0) {
+            /* Check if enough money */
+            if(this->money < getCostPerUnit(item) * qtyOfResource) return;
+
+            if(item == ItemType::PatientSick){
+                int bill = Seller::chooseRandomSeller(this->hospitals)->request(ItemType::PatientSick, qtyOfResource);
+                if (bill == 0) return;
+                this->money -= bill;
+                this->stocks[ItemType::PatientSick]+= qtyOfResource;
+            }else{
+                int bill = Seller::chooseRandomSeller(this->suppliers)->request(item, qtyOfResource);
+                if (bill == 0) return;
+                this->money -= bill;
+                this->stocks[item]+= qtyOfResource;
+            }
         }
     }
-    //Request a new resource from supplier
-    ItemType item = Seller::chooseRandomItem(tempItems);
-    Seller* supplier = Seller::chooseRandomSeller(this->suppliers); // Not sure if the static call is the right one
-    int amountToPay = 0;
-    amountToPay = supplier->request(item, 1);
-    this->money -= amountToPay;
-
-    stocks[item]++;
-
 }
 
 void Clinic::run() {
