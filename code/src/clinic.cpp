@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #include "clinic.h"
 #include "costs.h"
 #include <pcosynchro/pcothread.h>
@@ -28,7 +31,7 @@ bool Clinic::verifyResources() {
 int Clinic::request(ItemType what, int qty){
     if (what != ItemType::PatientHealed) return 0;
 
-    int bill = getCostPerUnit(what) * qty;
+    const int bill = getCostPerUnit(what) * qty;
 
     mutex.lock();
 
@@ -46,29 +49,29 @@ int Clinic::request(ItemType what, int qty){
 void Clinic::treatPatient() {
     //Temps simulant un traitement 
     interface->simulateWork();
+    const int salary = getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
 
     mutex.lock();
 
     for(ItemType item : resourcesNeeded){
         this->stocks[item]--;
     }
-    if(money >= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed))) {
+    if(money >= salary) {
+        money -= salary;
+        ++nbTreated;
+        ++stocks[ItemType::PatientHealed];
 
-    money -= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
-    ++nbTreated;
-    ++stocks[ItemType::PatientHealed];
-
-    interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
+        interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
     }
     mutex.unlock();
 }
 
 void Clinic::orderResources() {
-    /*Find missing resource*/
-    int qtyOfResource = 1;
+    //Find missing resource
+    const int qtyOfResource = 1;
     for (auto item : resourcesNeeded) {
         if (stocks[item] == 0) {
-            /* Check if enough money */
+            //Check if enough money
             if (money < getCostPerUnit(item) * qtyOfResource) return;
 
             int bill = 0;

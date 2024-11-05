@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #include "ambulance.h"
 #include "costs.h"
 #include <pcosynchro/pcothread.h>
@@ -21,15 +24,14 @@ Ambulance::Ambulance(int uniqueId, int fund, std::vector<ItemType> resourcesSupp
 }
 
 void Ambulance::sendPatient(){
-    int qty = 1;
+    const int qty = 1;
     Seller* hospital = Seller::chooseRandomSeller(this->hospitals);
     if(hospital->send(ItemType::PatientSick,qty,getMaterialCost()) != 0) {
 
-        this->money += getMaterialCost();
-        this->money -= getEmployeeSalary(EmployeeType::Supplier);
-        this->stocks.at(ItemType::PatientSick) -= qty;
-        this->nbTransfer += qty;
-
+        money += getMaterialCost();
+        money -= getEmployeeSalary(EmployeeType::Supplier);
+        stocks.at(ItemType::PatientSick) -= qty;
+        nbTransfer += qty;
     }
 }
 

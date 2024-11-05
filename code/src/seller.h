@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #ifndef SELLER_H
 #define SELLER_H
 

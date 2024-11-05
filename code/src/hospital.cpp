@@ -24,7 +24,7 @@ int Hospital::request(ItemType what, int qty){
         mutex.lock();
 
         if (stocks[what] >= qty) {
-            int bill = getCostPerUnit(ItemType::PatientSick) * qty;
+            const int bill = getCostPerUnit(ItemType::PatientSick) * qty;
             stocks[what] -= qty;
             currentBeds -= qty;
             money += bill;
@@ -39,37 +39,41 @@ int Hospital::request(ItemType what, int qty){
 
 void Hospital::freeHealedPatient() {
 
-    int healedCount = recoveryQueue.size();
+    const int healedCount = recoveryQueue.size();
 
     for (int i = 0; i < healedCount; ++i) {
-        int recoveryTime = recoveryQueue.front();  // Get the remaining recovery time of the first patient
-        recoveryQueue.pop(); // Remove the patient from the queue to process them
+        int recoveryTime = recoveryQueue.front();
+        recoveryQueue.pop();
 
         if (--recoveryTime == 0) {
-            // Patient is fully healed and can be freed
+            // Patient is healed
             --stocks[ItemType::PatientHealed];
             --currentBeds;
             ++nbFree;
         } else {
-            // Patient still needs more recovery time, add them back with updated recovery time
+            //Patient did not recover enough yet
             recoveryQueue.push(recoveryTime);
         }
     }
 }
 
 void Hospital::transferPatientsFromClinic() {
-    int qty = 1;
-    int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
-    int salary = getEmployeeSalary(EmployeeType::Nurse) * qty;
+
+    const auto clinic =  static_cast<Clinic*>(chooseRandomSeller(this->clinics));
+    const int qty = clinic->getNumberPatients() - clinic->getWaitingPatients();
+    const int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
+    const int salary = getEmployeeSalary(EmployeeType::Nurse) * qty;
 
     mutex.lock();
 
     if (money >= bill + salary && currentBeds + qty <= maxBeds) {
-        if (chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, qty) != 0) {
+        if (clinic->request(ItemType::PatientHealed, qty) == bill) {
             stocks[ItemType::PatientHealed] += qty;
             currentBeds += qty;
             nbHospitalised += qty;
-            recoveryQueue.push(5);
+            for (int i = 0; i< qty; ++i){
+                recoveryQueue.push(RECOVERY_TIME);
+            }
             money -= bill;
             money -= salary;
         }
@@ -78,7 +82,7 @@ void Hospital::transferPatientsFromClinic() {
 }
 
 int Hospital::send(ItemType it, int qty, int bill) {
-    int salary = getEmployeeSalary(EmployeeType::Nurse) * qty;
+    const int salary = getEmployeeSalary(EmployeeType::Nurse) * qty;
     mutex.lock();
 
     if(currentBeds + qty > maxBeds || money < bill + salary) {

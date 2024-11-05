@@ -1,5 +1,7 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #include "utils.h"
-
 
 void Utils::endService() {
     for (auto &thread : threads) {

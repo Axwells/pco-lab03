@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #include "supplier.h"
 #include "costs.h"
 #include <pcosynchro/pcothread.h>
@@ -16,7 +19,7 @@ Supplier::Supplier(int uniqueId, int fund, std::vector<ItemType> resourcesSuppli
 }
 
 int Supplier::request(ItemType it, int qty) {
-    int bill = getCostPerUnit(it) * qty;
+    const int bill = getCostPerUnit(it) * qty;
     mutex.lock();
 
     if (stocks[it] >= qty){
@@ -35,7 +38,7 @@ void Supplier::run() {
 
     while (!PcoThread::thisThread()->stopRequested()){
         ItemType resourceSupplied = getRandomItemFromStock();
-        int supplierCost = getEmployeeSalary(getEmployeeThatProduces(resourceSupplied));
+        const int supplierCost = getEmployeeSalary(getEmployeeThatProduces(resourceSupplied));
 
         /* Temps aléatoire borné qui simule l'attente du travail fini*/
         interface->simulateWork();

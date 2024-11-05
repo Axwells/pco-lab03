@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #ifndef HOSPITAL_H
 #define HOSPITAL_H
 
@@ -7,6 +10,8 @@
 
 #include "iwindowinterface.h"
 #include "seller.h"
+
+#define RECOVERY_TIME 5
 
 /**
  * @brief The Hospital class
