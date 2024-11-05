@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #include "hospital.h"
 #include "costs.h"
 #include "clinic.h"
