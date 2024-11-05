@@ -1,3 +1,6 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #include "clinic.h"
 #include "costs.h"
 #include <pcosynchro/pcothread.h>
@@ -27,53 +30,66 @@ bool Clinic::verifyResources() {
 
 int Clinic::request(ItemType what, int qty){
     if (what != ItemType::PatientHealed) return 0;
+
+    const int bill = getCostPerUnit(what) * qty;
+
+    mutex.lock();
+
     if (stocks[what] >= qty){
         stocks[what] -= qty;
-        //Not sure if the price should be updated
-        int price = getCostPerUnit(ItemType::PatientHealed) * qty;
-        this->money += price;
-        return price;
+        money += bill;
+
+        mutex.unlock();
+        return bill;
     }
+    mutex.unlock();
     return 0;
 }
 
 void Clinic::treatPatient() {
+    //Temps simulant un traitement 
+    interface->simulateWork();
+    const int salary = getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
+
+    mutex.lock();
+
     for(ItemType item : resourcesNeeded){
         this->stocks[item]--;
     }
-    //Temps simulant un traitement 
-    interface->simulateWork();
+    if(money >= salary) {
+        money -= salary;
+        ++nbTreated;
+        ++stocks[ItemType::PatientHealed];
 
-    this->money -= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
-    this->nbTreated++;
-    interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
+        interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
+    }
+    mutex.unlock();
 }
 
 void Clinic::orderResources() {
-    //Request a sick patient from hospital
-    int nbOfPatient;
-    Seller* hospital = Seller::chooseRandomSeller(this->hospitals); // Not sure if the static call is the right one
-    nbOfPatient = hospital->request(ItemType::PatientSick, 1); // TODO WORK with the return
-    if(nbOfPatient == 0) interface->consoleAppendText(uniqueId, "Clinic has found no sickPatient"); // TO REMOVE DEBUG MESSAGE
-    else stocks[ItemType::PatientSick]++;
-
-
-    //Something might be wrong, and a function already exists
-    std::map<ItemType, int> tempItems;
+    //Find missing resource
+    const int qtyOfResource = 1;
     for (auto item : resourcesNeeded) {
-        if(item != ItemType::PatientSick){
-            tempItems[item] = 1;
+        if (stocks[item] == 0) {
+            //Check if enough money
+            if (money < getCostPerUnit(item) * qtyOfResource) return;
+
+            int bill = 0;
+            if (item == ItemType::PatientSick) {
+                bill = Seller::chooseRandomSeller(this->hospitals)->request(ItemType::PatientSick, qtyOfResource);
+            } else {
+                bill = Seller::chooseRandomSeller(this->suppliers)->request(item, qtyOfResource);
+            }
+            if (bill) {
+                mutex.lock();
+
+                money -= bill;
+                stocks[item]+= qtyOfResource;
+
+                mutex.unlock();
+            }
         }
     }
-    //Request a new resource from supplier
-    ItemType item = Seller::chooseRandomItem(tempItems);
-    Seller* supplier = Seller::chooseRandomSeller(this->suppliers); // Not sure if the static call is the right one
-    int amountToPay = 0;
-    amountToPay = supplier->request(item, 1);
-    this->money -= amountToPay;
-
-    stocks[item]++;
-
 }
 
 void Clinic::run() {
@@ -83,7 +99,7 @@ void Clinic::run() {
     }
     interface->consoleAppendText(uniqueId, "[START] Factory routine");
 
-    while (this->nbTreated <= 900 /*Idk what to put*/) {
+    while (!PcoThread::thisThread()->stopRequested()) {
         if (verifyResources()) {
             treatPatient();
         } else {

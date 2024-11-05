@@ -1,8 +1,12 @@
+/**
+ * @authors : Gruber Adam, Pittet Axel
+ */
 #ifndef SELLER_H
 #define SELLER_H
 
 #include <QString>
 #include <QStringBuilder>
+#include <pcosynchro/pcomutex.h>
 #include <map>
 #include <vector>
 #include "costs.h"
@@ -82,6 +86,8 @@ protected:
     std::map<ItemType, int> stocks;
     int money;
     int uniqueId;
+
+    PcoMutex mutex;
 };
 
 #endif // SELLER_H

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PCO_LAB03"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\..\usr\share\;CMake Files\..\..\..\..\..\..\..\..\usr\share\qtcreator\;CMake Files\..\..\..\..\..\..\..\..\usr\share\qtcreator\package-manager\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Test\;CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pco_hospital">
+				<Option output="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DUSING_QT5"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_autogen/include"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 pco_hospital"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pco_hospital/fast">
+				<Option output="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DUSING_QT5"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_autogen/include"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 pco_hospital/fast"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pco_hospital_tests">
+				<Option output="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DTESTING_MODE"/>
+					<Add option="-DUSING_QT5"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_TESTLIB_LIB"/>
+					<Add option="-DQT_TESTCASE_BUILDDIR=&quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug&quot;"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_tests_autogen/include"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtTest"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 pco_hospital_tests"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pco_hospital_tests/fast">
+				<Option output="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_tests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DTESTING_MODE"/>
+					<Add option="-DUSING_QT5"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_TESTLIB_LIB"/>
+					<Add option="-DQT_TESTCASE_BUILDDIR=&quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug&quot;"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_tests_autogen/include"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal"/>
+					<Add directory="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtTest"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 pco_hospital_tests/fast"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pco_hospital_autogen">
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 pco_hospital_autogen"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pco_hospital_tests_autogen">
+				<Option working_dir="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 pco_hospital_tests_autogen"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_autogen/mocs_compilation.cpp">
+			<Option target="pco_hospital"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/build-code-Desktop-Debug/pco_hospital_tests_autogen/mocs_compilation.cpp">
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/ambulance.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/ambulance.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/clinic.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/clinic.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/hospital.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/hospital.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/costs.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/display.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/display.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/fakeinterface.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/iwindowinterface.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/main.cpp">
+			<Option target="pco_hospital"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/mainwindow.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/mainwindow.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/utils.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/windowinterface.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/windowinterface.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/seller.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/seller.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/supplier.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/supplier.h">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/tests_main.cpp">
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/utils.cpp">
+			<Option target="pco_hospital"/>
+			<Option target="pco_hospital_tests"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/share/qtcreator/package-manager/auto-setup.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\share\qtcreator\package-manager\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QComposePlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSEmulatorIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsEglDeviceIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSKmsGbmIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEglFSX11IntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevMousePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTabletPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QEvdevTouchScreenPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QIbusPlatformInputContextPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLibInputPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QLinuxFbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QVncIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbEglIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbGlxIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5Gui_QXcbIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Test/Qt5TestConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Test\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Test/Qt5TestConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Test\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Test/Qt5TestConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Test\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/../../../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
