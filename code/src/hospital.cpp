@@ -60,26 +60,28 @@ void Hospital::freeHealedPatient() {
 void Hospital::transferPatientsFromClinic() {
     int qty = 1;
     int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
+    int salary = getEmployeeSalary(EmployeeType::Nurse) * qty;
 
     mutex.lock();
 
-    if (money >= bill && currentBeds + qty <= maxBeds) {
+    if (money >= bill + salary && currentBeds + qty <= maxBeds) {
         if (chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, qty) != 0) {
             stocks[ItemType::PatientHealed] += qty;
             currentBeds += qty;
             nbHospitalised += qty;
             recoveryQueue.push(5);
             money -= bill;
-            money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
+            money -= salary;
         }
     }
     mutex.unlock();
 }
 
 int Hospital::send(ItemType it, int qty, int bill) {
+    int salary = getEmployeeSalary(EmployeeType::Nurse) * qty;
     mutex.lock();
 
-    if(currentBeds + qty > maxBeds || money < bill) {
+    if(currentBeds + qty > maxBeds || money < bill + salary) {
         mutex.unlock();
         return 0;
     }
@@ -87,7 +89,7 @@ int Hospital::send(ItemType it, int qty, int bill) {
     currentBeds += qty;
     nbHospitalised += qty;
     money -= bill;
-    money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
+    money -= salary;
 
     mutex.unlock();
     return 1;

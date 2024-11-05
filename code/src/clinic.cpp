@@ -29,11 +29,6 @@ int Clinic::request(ItemType what, int qty){
     if (what != ItemType::PatientHealed) return 0;
 
     int bill = getCostPerUnit(what) * qty;
-    /*for (auto item : resourcesNeeded) {
-        bill += getCostPerUnit(item);
-    }
-    bill +=getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
-    bill *= qty;*/
 
     mutex.lock();
 
