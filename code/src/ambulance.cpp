@@ -21,19 +21,21 @@ Ambulance::Ambulance(int uniqueId, int fund, std::vector<ItemType> resourcesSupp
 }
 
 void Ambulance::sendPatient(){
+    int qty = 1;
     Seller* hospital = Seller::chooseRandomSeller(this->hospitals);
-    int result = hospital->send(ItemType::PatientSick,1,TRANSFER_COST);
+    if(hospital->send(ItemType::PatientSick,qty,getMaterialCost()) != 0) {
 
-    if(result != 0){
-        this->money -= TRANSFER_COST;
-        this->stocks.at(ItemType::PatientSick) -= 1;
-        this->nbTransfer++;
+        this->money += getMaterialCost();
+        this->money -= getEmployeeSalary(EmployeeType::Supplier);
+        this->stocks.at(ItemType::PatientSick) -= qty;
+        this->nbTransfer += qty;
+
     }
 }
 
 void Ambulance::run() {
     interface->consoleAppendText(uniqueId, "[START] Ambulance routine");
-    while (stocks.at(ItemType::PatientSick) > 0) {
+    while (!PcoThread::thisThread()->stopRequested()) {
     
         sendPatient();
         

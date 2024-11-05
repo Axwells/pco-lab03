@@ -1,5 +1,6 @@
 #include "hospital.h"
 #include "costs.h"
+#include "clinic.h"
 #include <iostream>
 #include <pcosynchro/pcothread.h>
 
@@ -10,7 +11,7 @@ Hospital::Hospital(int uniqueId, int fund, int maxBeds)
 {
     interface->updateFund(uniqueId, fund);
     interface->consoleAppendText(uniqueId, "Hospital Created with " + QString::number(maxBeds) + " beds");
-    
+
     std::vector<ItemType> initialStocks = { ItemType::PatientHealed, ItemType::PatientSick };
 
     for(const auto& item : initialStocks) {
@@ -19,21 +20,78 @@ Hospital::Hospital(int uniqueId, int fund, int maxBeds)
 }
 
 int Hospital::request(ItemType what, int qty){
-    // TODO 
+    if (what == ItemType::PatientSick) {
+        mutex.lock();
+
+        if (stocks[what] >= qty) {
+            int bill = getCostPerUnit(ItemType::PatientSick) * qty;
+            stocks[what] -= qty;
+            currentBeds -= qty;
+            money += bill;
+
+            mutex.unlock();
+            return bill;
+        }
+        mutex.unlock();
+    }
     return 0;
 }
 
 void Hospital::freeHealedPatient() {
-    // TODO 
+
+    int healedCount = recoveryQueue.size();
+
+    for (int i = 0; i < healedCount; ++i) {
+        int recoveryTime = recoveryQueue.front();  // Get the remaining recovery time of the first patient
+        recoveryQueue.pop(); // Remove the patient from the queue to process them
+
+        if (--recoveryTime == 0) {
+            // Patient is fully healed and can be freed
+            --stocks[ItemType::PatientHealed];
+            --currentBeds;
+            ++nbFree;
+        } else {
+            // Patient still needs more recovery time, add them back with updated recovery time
+            recoveryQueue.push(recoveryTime);
+        }
+    }
 }
 
 void Hospital::transferPatientsFromClinic() {
-    // TODO
+    int qty = 1;
+    auto clinic = static_cast<Clinic *>(chooseRandomSeller(this->clinics));
+    mutex.lock();
+
+    int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
+
+    if (money >= bill && currentBeds + qty <= maxBeds) {
+        if (clinic->request(ItemType::PatientHealed, qty) != 0) {
+            stocks[ItemType::PatientHealed] += qty;
+            currentBeds += qty;
+            nbHospitalised += qty;
+            recoveryQueue.push(5);
+            money -= bill;
+            money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
+        }
+    }
+    mutex.unlock();
 }
 
 int Hospital::send(ItemType it, int qty, int bill) {
-    // TODO
-    return 0;
+    mutex.lock();
+
+    if(currentBeds + qty > maxBeds || money < bill) {
+        mutex.unlock();
+        return 0;
+    }
+    stocks[ItemType::PatientSick] += qty;
+    currentBeds += qty;
+    nbHospitalised += qty;
+    money -= bill;
+    money -= getEmployeeSalary(EmployeeType::Nurse) * qty;
+
+    mutex.unlock();
+    return 1;
 }
 
 void Hospital::run()
@@ -45,7 +103,7 @@ void Hospital::run()
 
     interface->consoleAppendText(uniqueId, "[START] Hospital routine");
 
-    while (true /*TODO*/) {
+    while (!PcoThread::thisThread()->stopRequested()) {
         transferPatientsFromClinic();
 
         freeHealedPatient();

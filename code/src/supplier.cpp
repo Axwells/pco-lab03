@@ -15,41 +15,45 @@ Supplier::Supplier(int uniqueId, int fund, std::vector<ItemType> resourcesSuppli
     interface->updateFund(uniqueId, fund);
 }
 
-
 int Supplier::request(ItemType it, int qty) {
-    if (this->stocks[it] >= qty){
-        int supplierCost = getEmployeeSalary(getEmployeeThatProduces(it));
+    mutex.lock();
 
+    if (this->stocks[it] >= qty){
+        int bill = getCostPerUnit(it) * qty;
         this->stocks[it] -= qty;
-        this->money += supplierCost * qty; // Not sure if the money needs to be increased
+        this->money += bill;
         this->nbSupplied += qty;
 
-        return supplierCost * qty;
+        mutex.unlock();
+        return bill;
     }
+    mutex.unlock();
     return 0;
 }
 
 void Supplier::run() {
     interface->consoleAppendText(uniqueId, "[START] Supplier routine");
 
-    while (this->money >= 10){ /*Maybe not right, but it is safe*/
+    while (!PcoThread::thisThread()->stopRequested()){
         ItemType resourceSupplied = getRandomItemFromStock();
         int supplierCost = getEmployeeSalary(getEmployeeThatProduces(resourceSupplied));
-        this->stocks[resourceSupplied]++;
-        this->money -= supplierCost;
 
         /* Temps aléatoire borné qui simule l'attente du travail fini*/
         interface->simulateWork();
-        //TODO
-        //I don't know what to implement after this TODO
-        nbSupplied++;
+
+        mutex.lock();
+        if (money >= supplierCost) {
+            money -= supplierCost;
+            ++stocks[resourceSupplied];
+            ++nbSupplied;
+        }
+        mutex.unlock();
 
         interface->updateFund(uniqueId, money);
         interface->updateStock(uniqueId, &stocks);
     }
     interface->consoleAppendText(uniqueId, "[STOP] Supplier routine");
 }
-
 
 std::map<ItemType, int> Supplier::getItemsForSale() {
     return stocks;
