@@ -84,7 +84,7 @@ protected:
     int money;
     int uniqueId;
 
-    PcoMutex mutex = {};
+    PcoMutex mutex;
 };
 
 #endif // SELLER_H

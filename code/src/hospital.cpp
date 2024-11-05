@@ -59,13 +59,12 @@ void Hospital::freeHealedPatient() {
 
 void Hospital::transferPatientsFromClinic() {
     int qty = 1;
-    auto clinic = static_cast<Clinic *>(chooseRandomSeller(this->clinics));
-    mutex.lock();
-
     int bill = getCostPerUnit(ItemType::PatientHealed) * qty;
 
+    mutex.lock();
+
     if (money >= bill && currentBeds + qty <= maxBeds) {
-        if (clinic->request(ItemType::PatientHealed, qty) != 0) {
+        if (chooseRandomSeller(this->clinics)->request(ItemType::PatientHealed, qty) != 0) {
             stocks[ItemType::PatientHealed] += qty;
             currentBeds += qty;
             nbHospitalised += qty;

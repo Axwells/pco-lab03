@@ -357,7 +357,6 @@
  mdp:/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h
  mdp:/usr/local/include/pcosynchro/pcomutex.h
  mdp:/usr/local/include/pcosynchro/pcosemaphore.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/mainwindow.cpp
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/mainwindow.h
  mmc:Q_OBJECT
  mdp:/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/mainwindow.h
@@ -746,6 +745,7 @@
  mdp:/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h
  mdp:/usr/local/include/pcosynchro/pcomutex.h
  mdp:/usr/local/include/pcosynchro/pcosemaphore.h
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/mainwindow.cpp
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/windowinterface.h
  mmc:Q_OBJECT
  mdp:/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/windowinterface.h
@@ -1146,15 +1146,15 @@
  mdp:/usr/local/include/pcosynchro/pcothread.h
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/display.cpp
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/seller.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/costs.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/main.cpp
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/hospital.cpp
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/main.cpp
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/costs.h
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/hospital.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/supplier.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/clinic.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/iwindowinterface.h
-/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/ambulance.h
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/clinic.cpp
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/ambulance.h
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/iwindowinterface.h
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/clinic.h
+/home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/supplier.h
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/supplier.cpp
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/ambulance.cpp
 /home/reds/Documents/Github/PCO/localProjects/pco-lab03/code/src/internal/utils.h

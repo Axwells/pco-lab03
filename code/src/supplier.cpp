@@ -16,13 +16,12 @@ Supplier::Supplier(int uniqueId, int fund, std::vector<ItemType> resourcesSuppli
 }
 
 int Supplier::request(ItemType it, int qty) {
+    int bill = getCostPerUnit(it) * qty;
     mutex.lock();
 
-    if (this->stocks[it] >= qty){
-        int bill = getCostPerUnit(it) * qty;
-        this->stocks[it] -= qty;
-        this->money += bill;
-        this->nbSupplied += qty;
+    if (stocks[it] >= qty){
+        stocks[it] -= qty;
+        money += bill;
 
         mutex.unlock();
         return bill;

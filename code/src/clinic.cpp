@@ -57,12 +57,15 @@ void Clinic::treatPatient() {
     for(ItemType item : resourcesNeeded){
         this->stocks[item]--;
     }
-    money -= getEmployeeSalary(EmployeeType::Doctor);
+    if(money >= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed))) {
+
+    money -= getEmployeeSalary(getEmployeeThatProduces(ItemType::PatientHealed));
     ++nbTreated;
     ++stocks[ItemType::PatientHealed];
 
-    mutex.unlock();
     interface->consoleAppendText(uniqueId, "Clinic have healed a new patient");
+    }
+    mutex.unlock();
 }
 
 void Clinic::orderResources() {
@@ -71,7 +74,7 @@ void Clinic::orderResources() {
     for (auto item : resourcesNeeded) {
         if (stocks[item] == 0) {
             /* Check if enough money */
-            if (this->money < getCostPerUnit(item) * qtyOfResource) return;
+            if (money < getCostPerUnit(item) * qtyOfResource) return;
 
             int bill = 0;
             if (item == ItemType::PatientSick) {
@@ -79,13 +82,14 @@ void Clinic::orderResources() {
             } else {
                 bill = Seller::chooseRandomSeller(this->suppliers)->request(item, qtyOfResource);
             }
-            if (bill == 0) return;
-            mutex.lock();
+            if (bill) {
+                mutex.lock();
 
-            money -= bill;
-            stocks[item]+= qtyOfResource;
+                money -= bill;
+                stocks[item]+= qtyOfResource;
 
-            mutex.unlock();
+                mutex.unlock();
+            }
         }
     }
 }
